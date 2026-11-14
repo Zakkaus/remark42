@@ -269,8 +269,8 @@ func securityHeadersMiddleware(imageProxyEnabled bool, allowedAncestors []string
 			if len(allowedAncestors) > 0 {
 				frameAncestors = strings.Join(allowedAncestors, " ")
 			}
-			// font-src is set to 'none' (no @font-face / no base64 fonts in the bundle).
-			w.Header().Set("Content-Security-Policy", fmt.Sprintf("default-src 'none'; base-uri 'none'; form-action 'none'; connect-src 'self'; frame-src 'self' mailto:; img-src %s; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'none'; object-src 'none'; frame-ancestors %s;", imgSrc, frameAncestors))
+			// font-src is 'self': the xzOS theme bundles its Unifont subsets and serves them from /web/fonts.
+			w.Header().Set("Content-Security-Policy", fmt.Sprintf("default-src 'none'; base-uri 'none'; form-action 'none'; connect-src 'self'; frame-src 'self' mailto:; img-src %s; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; font-src 'self'; object-src 'none'; frame-ancestors %s;", imgSrc, frameAncestors))
 			w.Header().Set("Permissions-Policy", "accelerometer=(), autoplay=(), camera=(), cross-origin-isolated=(), display-capture=(), encrypted-media=(), fullscreen=(), geolocation=(), gyroscope=(), keyboard-map=(), magnetometer=(), microphone=(), midi=(), payment=(), picture-in-picture=(), publickey-credentials-get=(), screen-wake-lock=(), sync-xhr=(), usb=(), xr-spatial-tracking=(), clipboard-read=(), clipboard-write=(), gamepad=(), hid=(), idle-detection=(), interest-cohort=(), serial=(), unload=(), window-management=()")
 			w.Header().Set("X-Content-Type-Options", "nosniff")
 			w.Header().Set("Referrer-Policy", "strict-origin-when-cross-origin")

@@ -591,6 +591,7 @@ func TestRest_frameAncestors(t *testing.T) {
 	defer resp.Body.Close()
 	assert.Equal(t, http.StatusOK, resp.StatusCode)
 	assert.Contains(t, resp.Header.Get("Content-Security-Policy"), "frame-ancestors *;")
+	assert.Contains(t, resp.Header.Get("Content-Security-Policy"), "font-src 'self';")
 }
 
 // startupT runs fully configured testing server
