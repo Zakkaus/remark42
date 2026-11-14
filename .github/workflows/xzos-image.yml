@@ -1,0 +1,65 @@
+name: xzos-image
+
+# Builds the xzOS-themed image from the repository Dockerfile and pushes it to
+# ghcr.io/zakkaus/remark42, tagged with the git tag's name (xzos-*). Upstream's
+# docker.yml publishes only master and v* builds to umputun's registries, so it
+# never publishes this fork's branches or tags.
+
+on:
+  push:
+    tags:
+      - "xzos-*"
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: "image tag to push; defaults to the name of the selected ref"
+        required: false
+
+concurrency:
+  group: xzos-image-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  image:
+    name: Build and push ghcr.io/zakkaus/remark42
+    # amd64 only; for an arm64 host run this job on ubuntu-24.04-arm with
+    # platforms linux/arm64, as upstream's docker.yml does
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: checkout
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+
+      - name: set up Docker Buildx
+        uses: docker/setup-buildx-action@v4
+
+      - name: login to ghcr.io
+        uses: docker/login-action@v4
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: build and push
+        uses: docker/build-push-action@v7
+        with:
+          context: .
+          platforms: linux/amd64
+          push: true
+          tags: ghcr.io/zakkaus/remark42:${{ inputs.tag || github.ref_name }}
+          cache-from: type=gha,scope=xzos-image
+          cache-to: type=gha,scope=xzos-image,mode=max
+          # the frontend stage still lints and tests the theme; the backend suite
+          # (go test -race, golangci-lint) is long and this branch changes one CSP
+          # line there, so XZOS.md runs it locally before tagging instead
+          build-args: |
+            SKIP_BACKEND_TEST=true
+            CI=github
+            GITHUB_SHA=${{ github.sha }}
+            GIT_BRANCH=${{ github.ref_name }}
+            GITHUB_REF=${{ github.ref }}
