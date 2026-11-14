@@ -1,3 +1,5 @@
+@import url('./fonts.css');
+
 body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -109,4 +111,49 @@ a {
   40% {
     box-shadow: 0 10px 0 0;
   }
+}
+
+/* xzOS theme: the blog's terminal look, applied over the components without
+   editing them. Unifont is a bitmap font on a 16px grid and blurs at any other
+   size, so every element, code included, uses it at 16px; every box is
+   square; and keyboard focus
+   gets one solid ring, because several components draw theirs at 40% alpha.
+   Text fields keep their own solid ring (--color47) instead. */
+*,
+*::before,
+*::after {
+  border-radius: 0 !important;
+}
+
+body,
+body *,
+body *::before,
+body *::after {
+  font-family: var(--font-family) !important;
+  font-size: 16px !important;
+}
+
+/* the comment field has no border of its own; give it a 3:1 edge at rest */
+textarea:not(:focus) {
+  outline: 1px solid var(--line-color);
+  outline-offset: -1px;
+}
+
+::placeholder {
+  color: rgb(var(--secondary-text-color));
+  opacity: 1;
+}
+
+:focus-visible:not(input, textarea) {
+  outline: 2px solid rgb(var(--primary-color)) !important;
+  outline-offset: 2px;
+}
+
+/* strong in the accent and em in the secondary colour, as in blog posts */
+.raw-content strong {
+  color: rgb(var(--primary-color));
+}
+
+.raw-content em {
+  color: rgb(var(--secondary-text-color));
 }

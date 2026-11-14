@@ -1,75 +1,91 @@
+/* xzOS theme: the light theme is the blog's day palette and the dark theme its
+ * night palette (xzos-blog src/styles/tokens.css). Only the values change and
+ * the names stay upstream's, so the component styles need no edits beyond the
+ * three that XZOS.md lists.
+ *
+ * day:   bg #fff8f2  surface #ffeadb  text #42302a  secondary #76605a
+ *        accent #b4410f  structural border #c3663c  decorative border #e9c1ae
+ * night: bg #141a03  surface #1d2606  text #d4ff3a  secondary #a8cc2a
+ *        accent #f0ff9a  border #6a811c
+ *
+ * Upstream's numbered colours are fixed shades that its light and dark rules
+ * pick from, so one variable can mean a background in one theme and text in
+ * the other. Each value below follows the role the variable plays in the light
+ * rules; the .dark block re-assigns every variable the dark rules or the shared
+ * rules use. Text and links reach 4.5:1 and borders and focus rings 3:1 on the
+ * background and surface of their theme. */
 :root {
-  --color0: #0f172a;
-  --color8: #262626;
-  --color22: #2d2d2c;
-  --color24: #313133;
-  --color7: #333;
-  --color23: #393734;
-  --color18: #383838;
-  --color19: #404040;
-  --color36: #575757;
+  --color0: #42302a; /* text */
+  --color8: #fff8f2; /* dark-only background */
+  --color22: #ffeadb; /* dark-only field background */
+  --color24: #c3663c; /* dark-only table border */
+  --color7: #42302a; /* field and preview text */
+  --color23: #ffeadb; /* dark-only table stripe */
+  --color18: #e9c1ae; /* dark-only pinned separator */
+  --color19: #ffeadb; /* dark-only highlight */
+  --color36: #c3663c; /* dark-only border */
   --color34: #555;
-  --color37: #586069;
+  --color37: #76605a; /* toolbar icons */
   --color14: #6a6a6a;
-  --color10: #777;
-  --color13: #888;
-  --color11: #969696;
-  --color32: #a6a6a6;
-  --color1: #aaa;
-  --color35: #d1d5db;
-  --color20: #ddd;
-  --color46: rgb(27, 31, 35, 0.15);
-  --color45: rgb(0, 0, 0, 0.1);
-  --color41: #efefef;
-  --color5: #eee;
-  --color44: rgb(255, 255, 255, 0.3);
-  --color6: #fff;
-  --color3: #e2efef;
-  --color4: #edf6f7;
-  --color16: #e2e8f0;
-  --color31: #cbd5e1;
-  --color21: #f1f5f9;
-  --color29: #0e7e9d;
-  --color9: #0aa;
-  --color15: #099;
-  --color33: #06c5c5;
-  --color40: #9cdddb;
-  --color43: #b7dddd;
-  --color42: #c6efef;
-  --color48: rgb(37, 156, 154, 0.6);
-  --color47: rgb(37, 156, 154, 0.4);
-  --color28: #672323;
-  --color25: #9a0000;
-  --color38: #ef0000;
-  --color27: #f98989;
-  --color26: #ffd7d7;
-  --color30: 204, 6, 6;
-  --color12: 37, 158, 6;
+  --color10: #76605a; /* usernames, meta */
+  --color13: #76605a; /* votes, profile meta */
+  --color11: #76605a; /* status, time, placeholder */
+  --color32: #76605a; /* dark-only provider text */
+  --color1: #76605a; /* muted icons, footer */
+  --color35: #c3663c; /* thread line */
+  --color20: #42302a; /* dark-only text */
+  --color46: transparent; /* popup shadow and spinner track: no shadows */
+  --color45: #c3663c; /* blockquote bar */
+  --color41: #42302a; /* dark-only hover text */
+  --color5: #ffeadb; /* form frame, actions bar */
+  --color44: #c3663c; /* dark-only blockquote bar */
+  --color6: #fff8f2; /* page background, text on accent */
+  --color3: #e9c1ae; /* pinned separator */
+  --color4: #ffeadb; /* highlighted and pinned comments */
+  --color16: #c3663c; /* field and table borders */
+  --color31: #76605a; /* hovered border */
+  --color21: #ffeadb; /* table stripe, disabled field */
+  --color29: #b4410f; /* admin, verified, counter */
+  --color9: #b4410f; /* links */
+  --color15: #b4410f; /* primary button, focus border */
+  --color33: #8f330b; /* hovered link and button */
+  --color40: #e9c1ae; /* avatar frame */
+  --color43: #c3663c; /* table row border */
+  --color42: #e9c1ae; /* selection */
+  --color48: #b4410f; /* selected suggestion */
+  --color47: #b4410f; /* focus ring */
+  --color28: #3d1208; /* dark-only error background */
+  --color25: #a3241b; /* error text */
+  --color38: #a3241b; /* character counter */
+  --color27: #ff9c8a; /* dark-only error text */
+  --color26: #ffdcd2; /* error background */
+  --color30: 163, 36, 27; /* downvote, error */
+  --color12: 46, 107, 26; /* upvote, success */
 
   /* code-highlight */
-  --chroma-bg: rgb(0, 0, 0, 0.05);
-  --chroma-base: #586e75;
-  --chroma-c: #7d7d7d;
-  --chroma-01: #589000;
-  --chroma-02: #cb4b16;
-  --chroma-03: #268bd2;
-  --chroma-04: #2aa198;
-  --chroma-05: #859900;
-  --chroma-06: #d33682;
-  --chroma-07: #00aee2;
+  --chroma-bg: #ffeadb;
+  --chroma-base: #42302a;
+  --chroma-c: #76605a;
+  --chroma-01: #7a4a00;
+  --chroma-02: #9b2a5a;
+  --chroma-03: #1f5687;
+  --chroma-04: #3a6614;
+  --chroma-05: #3a6614;
+  --chroma-06: #7a3a8a;
+  --chroma-07: #b4410f;
 
   /* Named variables */
-  --primary-color: 0, 170, 170;
-  --primary-brighter-color: 0, 153, 153;
-  --primary-darker-color: 0, 102, 102;
-  --primary-text-color: 38, 38, 38;
-  --secondary-text-color: 100, 116, 139;
-  --secondary-darker-text-color: 150, 150, 150;
-  --primary-background-color: 255, 255, 255;
-  --black-color: 0, 0, 0;
-  --white-color: 255, 255, 255;
-  --error-color: #b91c1c;
-  --error-background: #ff466f2b;
+  --primary-color: 180, 65, 15;
+  --primary-brighter-color: 143, 51, 11;
+  --primary-darker-color: 143, 51, 11;
+  --primary-text-color: 66, 48, 42;
+  --secondary-text-color: 118, 96, 90;
+  --secondary-darker-text-color: 118, 96, 90;
+  --primary-background-color: 255, 248, 242;
+  --black-color: 66, 48, 42;
+  --white-color: 255, 248, 242;
+  --error-color: #a3241b;
+  --error-background: #ffdcd2;
   --line-color: var(--color16);
   --line-brighter-color: var(--color31);
   --text-color: var(--black-color);
@@ -80,17 +96,78 @@
      font-family, not font-size: nearly every component sets its own explicit font-size
      (a real 10/12/14/16/20px type scale), so a single --font-size variable here would
      only affect the handful of elements that don't, not the widget's rendered text. */
-  --font-family: system-ui;
+  --font-family: 'Unifont', monospace;
 }
 
 :root .dark {
+  --color0: #d4ff3a;
+  --color1: #a8cc2a;
+  --color3: #6a811c;
+  --color4: #1d2606;
+  --color5: #d4ff3a; /* form field text */
+  --color6: #d4ff3a; /* light text and lines on the dark background */
+  --color7: #1d2606; /* form frame, editing borders */
+  --color8: #141a03; /* field, dropdown and table background */
+  --color9: #f0ff9a;
+  --color10: #a8cc2a;
+  --color11: #a8cc2a;
+  --color13: #a8cc2a;
+  --color15: #f0ff9a;
+  --color16: #6a811c;
+  --color18: #6a811c;
+  --color19: #1d2606;
+  --color20: #d4ff3a;
+  --color21: #1d2606;
+  --color22: #1d2606;
+  --color23: #1d2606;
+  --color24: #6a811c;
+  --color25: #ff9c8a;
+  --color26: #3d1208;
+  --color29: #f0ff9a;
+  --color30: 255, 156, 138;
+  --color12: 124, 245, 196;
+  --color31: #a8cc2a;
+  --color32: #a8cc2a;
+  --color33: #d4ff3a;
+  --color35: #a8cc2a; /* time */
+  --color36: #6a811c;
+  --color37: #a8cc2a;
+  --color38: #ff9c8a;
+  --color40: #6a811c;
+  --color41: #d4ff3a;
+  --color42: #3d4d0d;
+  --color43: #6a811c;
+  --color44: #6a811c;
+  --color45: #6a811c;
+  --color47: #f0ff9a;
+  --color48: #3d4d0d; /* selected suggestion behind light text */
   --line-color: var(--color36);
-  --primary-color: 0, 153, 153;
-  --primary-brighter-color: 0, 170, 170;
-  --primary-text-color: 241, 245, 249;
-  --primary-background-color: 38, 38, 38;
-  --secondary-text-color: 209, 213, 219;
-  --error-color: #ffa0a0;
+  --primary-color: 240, 255, 154;
+  --primary-brighter-color: 212, 255, 58;
+  --primary-darker-color: 212, 255, 58;
+  --primary-text-color: 212, 255, 58;
+  --primary-background-color: 20, 26, 3;
+  --secondary-text-color: 168, 204, 42;
+  --secondary-darker-text-color: 168, 204, 42;
+  --black-color: 29, 38, 6; /* tooltip background */
+  --white-color: 212, 255, 58; /* light text on dark fields */
+  --error-color: #ff9c8a;
+  --error-background: #3d1208;
   --line-brighter-color: var(--color11);
   --text-color: var(--white-color);
+}
+
+/* raw-content.css sets upstream's dark code colours on `.dark .raw-content`;
+   this selector outranks it so the night ones apply */
+:root .dark .raw-content {
+  --chroma-bg: #1d2606;
+  --chroma-base: #e8fff0;
+  --chroma-c: #a8cc2a;
+  --chroma-01: #d4ff3a;
+  --chroma-02: #ffb38a;
+  --chroma-03: #8fd3ff;
+  --chroma-04: #9fffc8;
+  --chroma-05: #9fffc8;
+  --chroma-06: #ffa3d7;
+  --chroma-07: #f0ff9a;
 }

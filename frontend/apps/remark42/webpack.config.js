@@ -173,7 +173,14 @@ module.exports = (_, { mode, analyze }) => {
     },
   };
 
-  const rules = [cssRule, cssModulesRule, urlRule];
+  // xzOS theme: the Unifont subsets that app/styles/fonts.css declares, emitted beside the bundle
+  const fontRule = {
+    test: /\.woff2$/,
+    type: 'asset/resource',
+    generator: { filename: 'fonts/[name][ext]' },
+  };
+
+  const rules = [cssRule, cssModulesRule, urlRule, fontRule];
 
   const devServer = {
     port: PORT,

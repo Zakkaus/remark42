@@ -16,7 +16,7 @@
   cursor: pointer;
   white-space: nowrap;
   background-color: rgb(var(--primary-color));
-  color: rgb(var(--white-color));
+  color: rgb(var(--primary-background-color));
 
   &:hover {
     background-color: rgb(var(--primary-brighter-color));
