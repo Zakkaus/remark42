@@ -115,7 +115,7 @@
 }
 
 .radio:checked + .provider {
-  color: rgb(var(--primary-color));
+  color: rgb(var(--primary-darker-color));
   background-color: rgb(var(--primary-color), 0.1);
   border-radius: 2px;
 }

@@ -1,91 +1,96 @@
-/* xzOS theme: the light theme is the blog's day palette and the dark theme its
- * night palette (xzos-blog src/styles/tokens.css). Only the values change and
- * the names stay upstream's, so the component styles need no edits beyond the
+/* xzOS theme: the light theme is the blog's day palette (Termius Light) and the
+ * dark theme its night palette (Aura Dark). Only the values change and the
+ * names stay upstream's, so the component styles need no edits beyond the
  * three that XZOS.md lists.
  *
- * day:   bg #fff8f2  surface #ffeadb  text #42302a  secondary #76605a
- *        accent #b4410f  structural border #c3663c  decorative border #e9c1ae
- * night: bg #141a03  surface #1d2606  text #d4ff3a  secondary #a8cc2a
- *        accent #f0ff9a  border #6a811c
+ * day:   bg #e9ecf0  surface #dde1e7  text #2b3040  secondary #555d70
+ *        emphasized #141824  accent #117140 (hover #0c5a32)
+ *        structural border #768097  decorative border #cfd5de
+ *        error #be2626 on #f9e3e3  selection #d3e9dc
+ * night: bg #15141b  surface #1f1d27  text #edecee  secondary #a19fad
+ *        emphasized #ffffff  accent #a277ff (hover #bc9bff)
+ *        structural border #6a677b  decorative border #4f4a74
+ *        error #ff6767 on #3a1a22  success #61ffca  selection #3d3466
  *
  * Upstream's numbered colours are fixed shades that its light and dark rules
  * pick from, so one variable can mean a background in one theme and text in
  * the other. Each value below follows the role the variable plays in the light
  * rules; the .dark block re-assigns every variable the dark rules or the shared
  * rules use. Text and links reach 4.5:1 and borders and focus rings 3:1 on the
- * background and surface of their theme. */
+ * background and surface of their theme; error text reaches 4.5:1 on its error
+ * background, and text on accent-filled buttons 4.5:1 on the accent. */
 :root {
-  --color0: #42302a; /* text */
-  --color8: #fff8f2; /* dark-only background */
-  --color22: #ffeadb; /* dark-only field background */
-  --color24: #c3663c; /* dark-only table border */
-  --color7: #42302a; /* field and preview text */
-  --color23: #ffeadb; /* dark-only table stripe */
-  --color18: #e9c1ae; /* dark-only pinned separator */
-  --color19: #ffeadb; /* dark-only highlight */
-  --color36: #c3663c; /* dark-only border */
+  --color0: #2b3040; /* text */
+  --color8: #e9ecf0; /* dark-only background */
+  --color22: #dde1e7; /* dark-only field background */
+  --color24: #768097; /* dark-only table border */
+  --color7: #2b3040; /* field and preview text */
+  --color23: #dde1e7; /* dark-only table stripe */
+  --color18: #cfd5de; /* dark-only pinned separator */
+  --color19: #dde1e7; /* dark-only highlight */
+  --color36: #768097; /* dark-only border */
   --color34: #555;
-  --color37: #76605a; /* toolbar icons */
+  --color37: #555d70; /* toolbar icons */
   --color14: #6a6a6a;
-  --color10: #76605a; /* usernames, meta */
-  --color13: #76605a; /* votes, profile meta */
-  --color11: #76605a; /* status, time, placeholder */
-  --color32: #76605a; /* dark-only provider text */
-  --color1: #76605a; /* muted icons, footer */
-  --color35: #c3663c; /* thread line */
-  --color20: #42302a; /* dark-only text */
+  --color10: #555d70; /* usernames, meta */
+  --color13: #555d70; /* votes, profile meta */
+  --color11: #555d70; /* status, time, placeholder */
+  --color32: #555d70; /* dark-only provider text */
+  --color1: #555d70; /* muted icons, footer */
+  --color35: #768097; /* thread line */
+  --color20: #2b3040; /* dark-only text */
   --color46: transparent; /* popup shadow and spinner track: no shadows */
-  --color45: #c3663c; /* blockquote bar */
-  --color41: #42302a; /* dark-only hover text */
-  --color5: #ffeadb; /* form frame, actions bar */
-  --color44: #c3663c; /* dark-only blockquote bar */
-  --color6: #fff8f2; /* page background, text on accent */
-  --color3: #e9c1ae; /* pinned separator */
-  --color4: #ffeadb; /* highlighted and pinned comments */
-  --color16: #c3663c; /* field and table borders */
-  --color31: #76605a; /* hovered border */
-  --color21: #ffeadb; /* table stripe, disabled field */
-  --color29: #b4410f; /* admin, verified, counter */
-  --color9: #b4410f; /* links */
-  --color15: #b4410f; /* primary button, focus border */
-  --color33: #8f330b; /* hovered link and button */
-  --color40: #e9c1ae; /* avatar frame */
-  --color43: #c3663c; /* table row border */
-  --color42: #e9c1ae; /* selection */
-  --color48: #b4410f; /* selected suggestion */
-  --color47: #b4410f; /* focus ring */
-  --color28: #3d1208; /* dark-only error background */
-  --color25: #a3241b; /* error text */
-  --color38: #a3241b; /* character counter */
-  --color27: #ff9c8a; /* dark-only error text */
-  --color26: #ffdcd2; /* error background */
-  --color30: 163, 36, 27; /* downvote, error */
-  --color12: 46, 107, 26; /* upvote, success */
+  --color45: #768097; /* blockquote bar */
+  --color41: #141824; /* dark-only hover text */
+  --color5: #dde1e7; /* form frame, actions bar */
+  --color44: #768097; /* dark-only blockquote bar */
+  --color6: #e9ecf0; /* page background, text on accent */
+  --color3: #cfd5de; /* pinned separator */
+  --color4: #dde1e7; /* highlighted and pinned comments */
+  --color16: #768097; /* field and table borders */
+  --color31: #555d70; /* hovered border */
+  --color21: #dde1e7; /* table stripe, disabled field */
+  --color29: #117140; /* admin, verified, counter */
+  --color9: #117140; /* links */
+  --color15: #117140; /* primary button, focus border */
+  --color33: #0c5a32; /* hovered link and button */
+  --color40: #cfd5de; /* avatar frame */
+  --color43: #768097; /* table row border */
+  --color42: #d3e9dc; /* selection */
+  --color48: #117140; /* selected suggestion */
+  --color47: #117140; /* focus ring */
+  --color28: #3a1a22; /* dark-only error background */
+  --color25: #be2626; /* error text */
+  --color38: #be2626; /* character counter */
+  --color27: #ff6767; /* dark-only error text */
+  --color26: #f9e3e3; /* error background */
+  --color30: 190, 38, 38; /* downvote, error */
+  --color12: 17, 113, 64; /* upvote, success */
 
   /* code-highlight */
-  --chroma-bg: #ffeadb;
-  --chroma-base: #42302a;
-  --chroma-c: #76605a;
-  --chroma-01: #7a4a00;
-  --chroma-02: #9b2a5a;
-  --chroma-03: #1f5687;
-  --chroma-04: #3a6614;
-  --chroma-05: #3a6614;
-  --chroma-06: #7a3a8a;
-  --chroma-07: #b4410f;
+  --chroma-bg: #dde1e7;
+  --chroma-base: #2b3040;
+  --chroma-c: #5c6376;
+  --chroma-01: #8a3fa0;
+  --chroma-02: #1d67a5;
+  --chroma-03: #865c00;
+  --chroma-04: #117140;
+  --chroma-05: #106f6f;
+  --chroma-06: #106f6f;
+  --chroma-07: #8a3fa0;
 
   /* Named variables */
-  --primary-color: 180, 65, 15;
-  --primary-brighter-color: 143, 51, 11;
-  --primary-darker-color: 143, 51, 11;
-  --primary-text-color: 66, 48, 42;
-  --secondary-text-color: 118, 96, 90;
-  --secondary-darker-text-color: 118, 96, 90;
-  --primary-background-color: 255, 248, 242;
-  --black-color: 66, 48, 42;
-  --white-color: 255, 248, 242;
-  --error-color: #a3241b;
-  --error-background: #ffdcd2;
+  --primary-color: 17, 113, 64;
+  --primary-brighter-color: 12, 90, 50;
+  --primary-darker-color: 12, 90, 50;
+  --primary-text-color: 43, 48, 64;
+  --secondary-text-color: 85, 93, 112;
+  --secondary-darker-text-color: 85, 93, 112;
+  --primary-background-color: 233, 236, 240;
+  --black-color: 43, 48, 64;
+  --white-color: 233, 236, 240;
+  --error-color: #be2626;
+  --error-background: #f9e3e3;
   --line-color: var(--color16);
   --line-brighter-color: var(--color31);
   --text-color: var(--black-color);
@@ -100,59 +105,59 @@
 }
 
 :root .dark {
-  --color0: #d4ff3a;
-  --color1: #a8cc2a;
-  --color3: #6a811c;
-  --color4: #1d2606;
-  --color5: #d4ff3a; /* form field text */
-  --color6: #d4ff3a; /* light text and lines on the dark background */
-  --color7: #1d2606; /* form frame, editing borders */
-  --color8: #141a03; /* field, dropdown and table background */
-  --color9: #f0ff9a;
-  --color10: #a8cc2a;
-  --color11: #a8cc2a;
-  --color13: #a8cc2a;
-  --color15: #f0ff9a;
-  --color16: #6a811c;
-  --color18: #6a811c;
-  --color19: #1d2606;
-  --color20: #d4ff3a;
-  --color21: #1d2606;
-  --color22: #1d2606;
-  --color23: #1d2606;
-  --color24: #6a811c;
-  --color25: #ff9c8a;
-  --color26: #3d1208;
-  --color29: #f0ff9a;
-  --color30: 255, 156, 138;
-  --color12: 124, 245, 196;
-  --color31: #a8cc2a;
-  --color32: #a8cc2a;
-  --color33: #d4ff3a;
-  --color35: #a8cc2a; /* time */
-  --color36: #6a811c;
-  --color37: #a8cc2a;
-  --color38: #ff9c8a;
-  --color40: #6a811c;
-  --color41: #d4ff3a;
-  --color42: #3d4d0d;
-  --color43: #6a811c;
-  --color44: #6a811c;
-  --color45: #6a811c;
-  --color47: #f0ff9a;
-  --color48: #3d4d0d; /* selected suggestion behind light text */
+  --color0: #edecee;
+  --color1: #a19fad;
+  --color3: #4f4a74;
+  --color4: #1f1d27;
+  --color5: #edecee; /* form field text */
+  --color6: #edecee; /* light text and lines on the dark background */
+  --color7: #1f1d27; /* form frame, editing borders */
+  --color8: #15141b; /* field, dropdown and table background */
+  --color9: #a277ff;
+  --color10: #a19fad;
+  --color11: #a19fad;
+  --color13: #a19fad;
+  --color15: #a277ff;
+  --color16: #6a677b;
+  --color18: #4f4a74;
+  --color19: #1f1d27;
+  --color20: #edecee;
+  --color21: #1f1d27;
+  --color22: #1f1d27;
+  --color23: #1f1d27;
+  --color24: #6a677b;
+  --color25: #ff6767;
+  --color26: #3a1a22;
+  --color29: #a277ff;
+  --color30: 255, 103, 103;
+  --color12: 97, 255, 202;
+  --color31: #a19fad;
+  --color32: #a19fad;
+  --color33: #bc9bff;
+  --color35: #a19fad; /* time */
+  --color36: #6a677b;
+  --color37: #a19fad;
+  --color38: #ff6767;
+  --color40: #4f4a74;
+  --color41: #fff;
+  --color42: #3d3466;
+  --color43: #6a677b;
+  --color44: #6a677b;
+  --color45: #6a677b;
+  --color47: #a277ff;
+  --color48: #3d3466; /* selected suggestion behind light text */
   --line-color: var(--color36);
-  --primary-color: 240, 255, 154;
-  --primary-brighter-color: 212, 255, 58;
-  --primary-darker-color: 212, 255, 58;
-  --primary-text-color: 212, 255, 58;
-  --primary-background-color: 20, 26, 3;
-  --secondary-text-color: 168, 204, 42;
-  --secondary-darker-text-color: 168, 204, 42;
-  --black-color: 29, 38, 6; /* tooltip background */
-  --white-color: 212, 255, 58; /* light text on dark fields */
-  --error-color: #ff9c8a;
-  --error-background: #3d1208;
+  --primary-color: 162, 119, 255;
+  --primary-brighter-color: 188, 155, 255;
+  --primary-darker-color: 188, 155, 255;
+  --primary-text-color: 237, 236, 238;
+  --primary-background-color: 21, 20, 27;
+  --secondary-text-color: 161, 159, 173;
+  --secondary-darker-text-color: 161, 159, 173;
+  --black-color: 31, 29, 39; /* tooltip background */
+  --white-color: 237, 236, 238; /* light text on dark fields */
+  --error-color: #ff6767;
+  --error-background: #3a1a22;
   --line-brighter-color: var(--color11);
   --text-color: var(--white-color);
 }
@@ -160,14 +165,14 @@
 /* raw-content.css sets upstream's dark code colours on `.dark .raw-content`;
    this selector outranks it so the night ones apply */
 :root .dark .raw-content {
-  --chroma-bg: #1d2606;
-  --chroma-base: #e8fff0;
-  --chroma-c: #a8cc2a;
-  --chroma-01: #d4ff3a;
-  --chroma-02: #ffb38a;
-  --chroma-03: #8fd3ff;
-  --chroma-04: #9fffc8;
-  --chroma-05: #9fffc8;
-  --chroma-06: #ffa3d7;
-  --chroma-07: #f0ff9a;
+  --chroma-bg: #1f1d27;
+  --chroma-base: #edecee;
+  --chroma-c: #858585;
+  --chroma-01: #a277ff;
+  --chroma-02: #82e2ff;
+  --chroma-03: #ffca85;
+  --chroma-04: #61ffca;
+  --chroma-05: #f694ff;
+  --chroma-06: #f694ff;
+  --chroma-07: #a277ff;
 }

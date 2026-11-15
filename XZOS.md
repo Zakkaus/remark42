@@ -24,7 +24,8 @@ Three component styles are edited, because a variable value cannot fix them:
   accent is light, so upstream's white text would be unreadable on it, and the
   same variables also colour light text elsewhere.
 - `components/auth/auth.module.css`: the sign-in dropdown draws a 1px border
-  instead of its box shadow.
+  instead of its box shadow. The checked provider's text uses the darker accent,
+  because the accent on its 10% accent tint stays under 4.5:1 by day.
 
 ## Rebase onto a new upstream tag
 
