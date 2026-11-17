@@ -70,6 +70,6 @@
     <script>
       var remark_config = { host: location.origin + location.pathname.replace(/\/[^/]*$/, '').replace(/\/web$/, '') };
     </script>
-    <script src="deleteme.mjs" type="module"></script>
+    <script src="deleteme.mjs?<%= compilation.hash %>" type="module"></script>
   </body>
 </html>

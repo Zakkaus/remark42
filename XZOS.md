@@ -13,7 +13,8 @@
 | `frontend/apps/remark42/app/styles/global.css` | Imports `fonts.css`; appends one block: Unifont 16px everywhere, radius 0, a solid focus ring, a 3:1 edge on the comment field, placeholder colour, accent `strong` and secondary `em` |
 | `frontend/apps/remark42/app/styles/fonts.css` (new) | `@font-face` rules for the Latin, CJK chunk and common-CJK subsets; the common file stays last |
 | `frontend/apps/remark42/app/assets/fonts/` (new) | The woff2 subsets and `unifont-OFL.txt` (SIL OFL 1.1) |
-| `frontend/apps/remark42/webpack.config.js` | Emits `.woff2` to `/web/fonts/` |
+| `frontend/apps/remark42/webpack.config.js` | Emits `.woff2` to `/web/fonts/`; names the lazy chunks and fonts by content |
+| `frontend/apps/remark42/templates/{iframe,last-comments,deleteme}.ejs` | The widget pages load `remark.mjs`, `remark.css`, `last-comments.css` and `deleteme.mjs` with `?<build hash>`, so readers fetch the new files after an update instead of reusing cached ones for hours; the bootstraps third-party pages load (`embed.mjs`, `counter.mjs`, `last-comments.mjs`) keep their fixed URLs |
 | `backend/app/rest/api/middleware.go` | CSP `font-src 'none'` becomes `font-src 'self'`, or the browser refuses the fonts |
 | `.github/workflows/xzos-image.yml` (new) | Builds and pushes the image on `xzos-*` tags |
 

@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <link rel="modulepreload" href="remark.mjs" />
+    <link rel="modulepreload" href="remark.mjs?<%= compilation.hash %>" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>Comments</title>
     <base target="_blank" />
@@ -56,7 +56,7 @@
       })();
     </script>
     <% if (htmlWebpackPlugin.options.env === 'production') { %>
-    <link rel="stylesheet" href="remark.css" />
+    <link rel="stylesheet" href="remark.css?<%= compilation.hash %>" />
     <% } %>
   </head>
   <body>
@@ -115,7 +115,7 @@
       (function (d) {
         var r = d.head || d.body;
         var s = d.createElement('script');
-        s.src = 'remark.mjs';
+        s.src = 'remark.mjs?<%= compilation.hash %>';
         s.type = 'module';
         s.async = true;
         s.defer = true;

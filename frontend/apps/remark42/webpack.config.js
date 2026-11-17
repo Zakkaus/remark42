@@ -177,7 +177,7 @@ module.exports = (_, { mode, analyze }) => {
   const fontRule = {
     test: /\.woff2$/,
     type: 'asset/resource',
-    generator: { filename: 'fonts/[name][ext]' },
+    generator: { filename: 'fonts/[name].[contenthash:8][ext]' },
   };
 
   const rules = [cssRule, cssModulesRule, urlRule, fontRule];
@@ -246,7 +246,9 @@ module.exports = (_, { mode, analyze }) => {
     output: {
       ...output,
       filename: '[name].mjs',
-      chunkFilename: '[name].mjs',
+      // the lazily loaded chunks (locales, emoji) are named by their content, as the pages name
+      // the entries by the build: every url changes when what it serves does
+      chunkFilename: '[name].[contenthash:8].mjs',
     },
     module: {
       rules: [getTsRule(), ...rules],
